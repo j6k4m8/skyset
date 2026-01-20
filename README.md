@@ -4,6 +4,15 @@ Skyset is a tiny, file-based contract for sharing a live visual theme between ap
 
 This repo is a TUI editor + preview tool and a reference implementation for the format.
 
+<img width="829" height="505" alt="Image" src="https://github.com/user-attachments/assets/a2c412bc-5df0-47a4-afd9-53b2f0680f7c" />
+
+## Example Use-Cases
+
+-   The [Coppelia music player](https://blog.jordan.matelsky.com/coppelia/) sets a system-wide theme based on the currently playing album art
+-   Get the current weather conditions outside and set your terminal colors and wallpaper accordingly
+-   Coordinate your apps' themes to match images on your desktop
+-   Shift your whole environment gradually to match the time of day
+
 ## Docs
 
 -   [`docs/overview.md`](docs/overview.md) – Concise overview
