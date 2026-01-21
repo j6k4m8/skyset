@@ -36,12 +36,24 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
+            - name: Check tag is on main
+              id: check_main
+              run: |
+                  git fetch origin main
+                  if git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+                      echo "on_main=true" >> "$GITHUB_OUTPUT"
+                  else
+                      echo "on_main=false" >> "$GITHUB_OUTPUT"
+                  fi
             - name: Set up Rust
               uses: dtolnay/rust-toolchain@stable
+              if: steps.check_main.outputs.on_main == 'true'
             - name: Build release
               run: cargo build --release --verbose
+              if: steps.check_main.outputs.on_main == 'true'
             - name: Upload artifacts
               uses: actions/upload-artifact@v4
+              if: steps.check_main.outputs.on_main == 'true'
               with:
                   name: skyset-${{ matrix.os }}
                   path: |
